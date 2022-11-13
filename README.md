@@ -1,2 +1,3 @@
 # 01-social-network-react
-My Social Network
+A Social Network
+（＾∀＾●）ﾉｼ
