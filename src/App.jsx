@@ -1,16 +1,25 @@
 import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import { lazy, Suspense } from 'react'
+import CircularProgress from '@mui/material/CircularProgress';
 
+// const MainLayout = lazy(()=>delayForDemo(import("./layouts/MainLayout")))
 const MainLayout = lazy(()=>import("./layouts/MainLayout"))
 const DashboardLayout = lazy(()=>import("./layouts/DashboardLayout"))
 const GroupsLayout = lazy(()=>import("./layouts/GroupsLayout"))
+
+// Function with delay for testing the loading circle ♥
+function delayForDemo(promise) {
+  return new Promise(resolve => {
+    setTimeout(resolve, 2000);
+  }).then(() => promise);
+}
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Suspense fallback={<h1>loading...</h1>}>
+      <Suspense fallback={<CircularProgress color="inherit" />}>
         <Routes>
           <Route index element={<h1>Home</h1>} />
           <Route path='/' element={<MainLayout />}>
